@@ -14,10 +14,12 @@ export default function Home() {
     <div>
       <header className="flex flex-col justify-center items-center mt-2">
         <div className="flex">
-          <span className="text-white mr-2">
+          <span className="text-white mr-2 font-bold italic">
             Built by joaosilva7875@gmail.com
           </span>
-          <img src={GithubIcon} className="w-5 h-5" />
+          <a target="_blank" href="https://github.com/Joaosilva27">
+            <img src={GithubIcon} className="w-5 h-5" />
+          </a>
         </div>
         <img src={OldTcgIcon} className="w-50 h-50 object-contain" />
       </header>
