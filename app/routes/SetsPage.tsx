@@ -27,6 +27,7 @@ export default function SetsPage() {
         {sets.map((set) => (
           <SetBanner
             setTitle={set.name}
+            cardAmount={set.cardCount.total}
             imageUrl={set.logo ? `${set.logo}.png` : FallbackImageErrorIcon}
           />
         ))}
