@@ -1,5 +1,5 @@
-import OldTcgIcon from "./icons/oldTcgIcon.png";
-import GithubIcon from "./icons/githubIcon.png";
+import OldTcgIcon from "../icons/oldTcgIcon.png";
+import GithubIcon from "../icons/githubIcon.png";
 
 export default function Header() {
   return (
