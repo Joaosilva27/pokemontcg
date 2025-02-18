@@ -5,7 +5,7 @@ interface SetBannerProps {
 
 export default function SetBanner({ imageUrl, setTitle }: SetBannerProps) {
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center m-5">
       <img src={imageUrl} className="w-30 h-15 object-contain" />
       <span>{setTitle}</span>
     </div>

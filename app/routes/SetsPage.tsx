@@ -23,7 +23,7 @@ export default function SetsPage() {
   return (
     <div className="flex flex-col justify-center items-center">
       <h2 className="mb-6">Browse through all the sets</h2>
-      <div>
+      <div className="flex flex-wrap m-10 justify-center items-center">
         {sets.map((set) => (
           <SetBanner
             setTitle={set.name}
