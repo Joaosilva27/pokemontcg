@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import SetBanner from "~/components/SetBanner";
 import axios from "axios";
-import TCGdex from "@tcgdex/sdk";
+import FallbackImageErrorIcon from "../icons/tcgIcon.png";
 
 export default function SetsPage() {
   const [sets, setSets] = useState<any>([]);
@@ -24,7 +24,12 @@ export default function SetsPage() {
     <div className="flex flex-col justify-center items-center">
       <h2 className="mb-6">Browse through all the sets</h2>
       <div>
-        <SetBanner setTitle="test" />
+        {sets.map((set) => (
+          <SetBanner
+            setTitle={set.name}
+            imageUrl={set.logo ? `${set.logo}.png` : FallbackImageErrorIcon}
+          />
+        ))}
       </div>
     </div>
   );
