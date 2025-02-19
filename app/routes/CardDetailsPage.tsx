@@ -32,18 +32,29 @@ export default function CardDetailsPage() {
         />
         <h1 className="text-xl font-bold">{pokemonCardData?.name}</h1>
       </div>
-      <div className="flex items-center">
+      <div className="flex flex-wrap items-center justify-center mb-6">
         <img
           src={`${pokemonCardData?.image}/high.jpg`}
           className="w-50 h-100 object-contain"
         />
-        <div className="flex flex-col ml-4">
+        <div className="flex flex-col ml-4 mt-6">
           <span>Rarity: {pokemonCardData?.rarity}</span>
           <span>
             {pokemonCardData?.types?.[0] && (
-              <span>Types: {pokemonCardData?.types?.[0]}</span>
+              <span>Type: {pokemonCardData?.types?.[0]}</span>
             )}
           </span>
+          <span>
+            Card: {pokemonCardData?.localId} /{" "}
+            {pokemonCardData?.set?.cardCount?.total}
+          </span>
+          <span>Illustrator: {pokemonCardData?.illustrator}</span>
+          {pokemonCardData?.attacks?.map((attack) => (
+            <div className="flex flex-col max-w-96 mt-6">
+              <span>{attack?.name}</span>
+              <span className="text-sm">{attack?.effect}</span>
+            </div>
+          ))}
         </div>
       </div>
     </div>
