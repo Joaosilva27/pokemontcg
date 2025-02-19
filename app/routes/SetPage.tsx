@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import CardBanner from "~/components/CardBanner";
 
 export default function SetPage() {
   const params = useParams();
@@ -75,6 +76,16 @@ export default function SetPage() {
               ? setCards?.cardCount?.reverse
               : "None"}
           </span>
+        </div>
+        <div className="flex flex-wrap justify-center">
+          {setCards?.cards?.map((card) => {
+            return (
+              <CardBanner
+                cardName={card.name}
+                cardImage={`${card.image}/high.jpg`}
+              />
+            );
+          })}
         </div>
       </div>
     </div>
