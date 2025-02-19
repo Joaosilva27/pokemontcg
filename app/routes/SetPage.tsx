@@ -6,6 +6,7 @@ import CardBanner from "~/components/CardBanner";
 export default function SetPage() {
   const params = useParams();
   const [setCards, setSetCards] = useState<any>([]);
+  const [selectedCard, setSelectedCard] = useState<any>(null);
 
   useEffect(() => {
     const fetchCards = async () => {
@@ -88,11 +89,36 @@ export default function SetPage() {
               <CardBanner
                 cardName={card.name}
                 cardImage={`${card.image}/high.jpg`}
+                onClick={() => setSelectedCard(card)}
               />
             );
           })}
         </div>
       </div>
+      {/* Modal overlay */}
+      {selectedCard && (
+        <div
+          className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4"
+          onClick={() => setSelectedCard(null)}
+        >
+          <div
+            className="relative max-w-full max-h-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={`${selectedCard.image}/high.jpg`}
+              className="max-w-[90vw] max-h-[90vh] object-contain"
+              alt={selectedCard.name}
+            />
+            <button
+              className="absolute top-0 right-0 m-4 text-white text-2xl hover:text-gray-300"
+              onClick={() => setSelectedCard(null)}
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
