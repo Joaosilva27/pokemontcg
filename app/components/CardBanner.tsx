@@ -1,5 +1,3 @@
-import { Link } from "react-router";
-
 interface CardBannerProps {
   cardImage: string;
   cardName: string;
