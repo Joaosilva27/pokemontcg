@@ -34,11 +34,17 @@ export default function SetPage() {
         )}
 
         <div className="flex flex-col m-3">
-          <h1 className="text-xl font-bold">{setCards?.name}</h1>
+          <div className="flex items-center">
+            <h1 className="text-xl font-bold">{setCards?.name}</h1>
+            <span className="text-xs">
+              (From {setCards?.serie?.name} series.)
+            </span>
+          </div>
+          <span>Abbreviation: {setCards?.abbreviation?.official}</span>
           <span>Release date: {setCards?.releaseDate}</span>
           <span>Cards: {setCards?.cardCount?.total}</span>
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col m-3">
           <span>
             First Ed. Cards:{" "}
             {setCards?.cardCount?.firstEd != 0
