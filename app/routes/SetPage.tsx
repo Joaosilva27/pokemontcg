@@ -41,7 +41,12 @@ export default function SetPage() {
               (From {setCards?.serie?.name} series.)
             </span>
           </div>
-          <span>Abbreviation: {setCards?.abbreviation?.official}</span>
+          <span>
+            Abbreviation:{" "}
+            {setCards?.abbreviation?.official
+              ? setCards?.abbreviation?.official
+              : "No abbreviation available"}
+          </span>
           <span>Release date: {setCards?.releaseDate}</span>
           <span>Cards: {setCards?.cardCount?.total}</span>
         </div>
