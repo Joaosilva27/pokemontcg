@@ -4,4 +4,5 @@ export default [
   index("routes/home.tsx"),
   route("/sets", "routes/SetsPage.tsx"),
   route("/sets/:setId", "routes/SetPage.tsx"),
+  route("/cards/:pokemonId", "routes/CardDetailsPage.tsx"),
 ] satisfies RouteConfig;

@@ -90,11 +90,14 @@ export default function SetPage() {
                 cardName={card.name}
                 cardImage={`${card.image}/high.jpg`}
                 onClick={() => setSelectedCard(card)}
+                cardId={card.id}
+                key={card.id}
               />
             );
           })}
         </div>
       </div>
+
       {/* Modal overlay */}
       {selectedCard && (
         <div
