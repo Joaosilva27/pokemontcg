@@ -20,9 +20,6 @@ export default function Home() {
           <span className="bg-gray-400 rounded-lg p-2 mr-3">Sets</span>
         </Link>
         <Link>
-          <span className="bg-gray-400 rounded-lg p-2 mr-3">All Cards</span>
-        </Link>
-        <Link>
           <span className="bg-gray-400 rounded-lg p-2">My Collection</span>
         </Link>
       </nav>

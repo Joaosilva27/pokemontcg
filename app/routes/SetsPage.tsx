@@ -26,7 +26,10 @@ export default function SetsPage() {
       <h2>Browse through all the sets</h2>
       <h3 className="text-xs text-center">
         I will not add a 'filter by year' feature because that would require me
-        to update the app constantly, and this is just a homework project.
+        to update the app constantly, and this is just a homework project.{" "}
+        <br></br>
+        The sets however, will always be updated automatically as soon as a new
+        set is released (thanks to TcgDex API).
       </h3>
       <div className="flex flex-wrap m-6 justify-center items-center">
         {sets.map((set) => (
