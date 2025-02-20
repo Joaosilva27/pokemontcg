@@ -55,7 +55,7 @@ export default function CardDetailsPage() {
                 {ability.name}
                 <span className="text-sm">(ability):</span>
               </span>
-              <span>{ability.effect}</span>
+              <span className="text-sm">{ability.effect}</span>
             </div>
           ))}
           {pokemonCardData?.attacks?.map((attack) => (
@@ -74,7 +74,7 @@ export default function CardDetailsPage() {
                   </span>
                 ) : (
                   <span>
-                    {attack?.damage && (
+                    {attack?.damage && attack?.name && (
                       <span>
                         {attack?.name}: This attack deals {attack?.damage}{" "}
                         damage.
