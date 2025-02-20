@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div>
       <nav className="flex justify-center mb-4">
-        <Link>
+        <Link to="/search">
           <span className="bg-gray-400 rounded-lg p-2 mr-3">Search</span>
         </Link>
         <Link to="/sets">
