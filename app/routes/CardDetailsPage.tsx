@@ -49,6 +49,15 @@ export default function CardDetailsPage() {
             {pokemonCardData?.set?.cardCount?.total}
           </span>
           <span>Illustrator: {pokemonCardData?.illustrator}</span>
+          {pokemonCardData?.abilities?.map((ability) => (
+            <div className="flex flex-col max-w-96 mt-6">
+              <span>
+                {ability.name}
+                <span className="text-sm">(ability):</span>
+              </span>
+              <span>{ability.effect}</span>
+            </div>
+          ))}
           {pokemonCardData?.attacks?.map((attack) => (
             <div className="flex flex-col max-w-96 mt-6">
               <span>
