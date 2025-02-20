@@ -51,7 +51,29 @@ export default function CardDetailsPage() {
           <span>Illustrator: {pokemonCardData?.illustrator}</span>
           {pokemonCardData?.attacks?.map((attack) => (
             <div className="flex flex-col max-w-96 mt-6">
-              <span>{attack?.name}</span>
+              <span>
+                {attack?.name && attack?.effect ? (
+                  <span>
+                    {attack?.damage ? (
+                      <span>
+                        {attack?.name}: This attack deals {attack?.damage}{" "}
+                        damage.
+                      </span>
+                    ) : (
+                      <span>{attack?.name}:</span>
+                    )}
+                  </span>
+                ) : (
+                  <span>
+                    {attack?.damage && (
+                      <span>
+                        {attack?.name}: This attack deals {attack?.damage}{" "}
+                        damage.
+                      </span>
+                    )}
+                  </span>
+                )}
+              </span>
               <span className="text-sm">{attack?.effect}</span>
             </div>
           ))}
