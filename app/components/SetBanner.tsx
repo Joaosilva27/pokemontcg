@@ -11,8 +11,8 @@ export default function SetBanner({
 }: SetBannerProps) {
   return (
     <div className="flex flex-col justify-center items-center m-5">
-      <img src={imageUrl} className="w-30 h-15 object-contain" />
-      <span>{setTitle}</span>
+      <img src={imageUrl} className="w-26 h-15 object-contain" />
+      <span className="text-sm">{setTitle}</span>
       <span className="text-xs">{cardAmount} cards</span>
     </div>
   );

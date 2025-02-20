@@ -23,7 +23,11 @@ export default function SetsPage() {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <h2 className="mb-6">Browse through all the sets</h2>
+      <h2>Browse through all the sets</h2>
+      <h3 className="text-xs text-center">
+        I will not add a 'filter by year' feature because that would require me
+        to update the app constantly, and this is just a homework project.
+      </h3>
       <div className="flex flex-wrap m-6 justify-center items-center">
         {sets.map((set) => (
           <Link to={`/sets/${set.id}`}>
