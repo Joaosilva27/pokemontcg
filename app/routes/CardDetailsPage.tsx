@@ -55,6 +55,14 @@ export default function CardDetailsPage() {
               <span className="text-sm">{attack?.effect}</span>
             </div>
           ))}
+          <span className="max-w-96 mt-6">
+            {pokemonCardData?.effect && (
+              <span>
+                Effect:{" "}
+                <span className="text-sm">{pokemonCardData?.effect}</span>
+              </span>
+            )}
+          </span>
         </div>
       </div>
     </div>
