@@ -14,13 +14,19 @@ export default function Home() {
     <div>
       <nav className="flex justify-center mb-4">
         <Link to="/search">
-          <span className="bg-gray-400 rounded-lg p-2 mr-3">Search</span>
+          <span className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 ml-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+            Search
+          </span>
         </Link>
         <Link to="/sets">
-          <span className="bg-gray-400 rounded-lg p-2 mr-3">Sets</span>
+          <span className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 ml-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+            Sets
+          </span>
         </Link>
         <Link>
-          <span className="bg-gray-400 rounded-lg p-2">My Collection</span>
+          <span className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 ml-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+            My Collection
+          </span>
         </Link>
       </nav>
       <section>

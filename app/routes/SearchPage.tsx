@@ -11,11 +11,13 @@ export default function SearchPage() {
     e.preventDefault();
 
     const getPokemonCards = async () => {
-      const fetchCards = await axios.get(
-        `https://api.tcgdex.net/v2/en/cards?name=${inputSearch}`
-      );
-      setCardsResult(fetchCards.data);
-      console.log(fetchCards.data);
+      if (inputSearch != "") {
+        const fetchCards = await axios.get(
+          `https://api.tcgdex.net/v2/en/cards?name=${inputSearch}`
+        );
+        setCardsResult(fetchCards.data);
+        console.log(fetchCards.data);
+      }
     };
 
     getPokemonCards();
@@ -52,6 +54,7 @@ export default function SearchPage() {
             )}
           </div>
         ))}
+        {!cardsResult && <span>No results</span>}
       </div>
 
       {selectedCard && (
