@@ -3,7 +3,7 @@ import GithubIcon from "../icons/githubIcon.png";
 
 export default function Header() {
   return (
-    <header className="flex flex-col justify-center items-center mt-2">
+    <header className="flex flex-col justify-center items-center mt-5">
       <div className="flex">
         <h6 className="text-white mr-2 font-bold italic text-xs">
           Built by joaosilva7875@gmail.com

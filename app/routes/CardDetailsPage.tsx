@@ -94,7 +94,9 @@ export default function CardDetailsPage() {
               <div className="bg-gray-800 p-4 rounded-lg">
                 <p className="text-sm text-gray-400">Illustrator</p>
                 <p className="font-bold text-green-400">
-                  {pokemonCardData?.illustrator}
+                  {pokemonCardData?.illustrator
+                    ? pokemonCardData?.illustrator
+                    : "Official Artwork"}
                 </p>
               </div>
             </div>

@@ -49,32 +49,47 @@ export default function SetsPage() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <h3 className="text-xs text-center">
-        I will not add a 'filter by year' feature because that would require me
-        to update the app constantly, and this is just a homework project.{" "}
-        <br></br>
-        The sets however, will always be updated automatically as soon as a new
-        set is released (thanks to TcgDex API).
-      </h3>
-      <form className="flex items-center justify-center mt-3">
-        <input
-          value={inputSearch}
-          onChange={(e) => setInputSearch(e.target.value)}
-          placeholder="Search for a set..."
-          className="bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        ></input>
-        <button
-          onClick={onSetSearch}
-          className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 ml-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-        >
-          Search
-        </button>
-      </form>
-      {isUserSearching == false ? (
-        <div className="flex flex-wrap m-6 justify-center items-center">
-          {sets.map((set) => (
-            <Link to={`/sets/${set.id}`}>
+    <div className="min-h-screen bg-black text-white p-8">
+      <div className="max-w-6xl mx-auto">
+        {/* Disclaimer */}
+        <p className="text-center text-gray-400 text-sm mb-8">
+          I will not add a 'filter by year' feature because that would require
+          me to update the app constantly, and this is just a homework project.
+          The sets however, will always be updated automatically as soon as a
+          new set is released (thanks to TcgDex API).
+        </p>
+
+        {/* Search Section */}
+        <div className="mb-12 px-2 md:px-6 py-4 bg-gray-900 rounded-2xl shadow-xl">
+          <form className="flex items-center w-full gap-1 md:gap-3">
+            <input
+              value={inputSearch}
+              onChange={(e) => setInputSearch(e.target.value)}
+              placeholder="Search for a set..."
+              className="flex-1 bg-gray-800 text-white rounded-xl px-4 py-3 md:px-6 md:py-4 
+        border-2 border-gray-700 focus:border-purple-500 focus:ring-2
+        focus:ring-purple-500 outline-none transition-all text-sm min-w-0"
+            />
+            <button
+              onClick={onSetSearch}
+              className="bg-gradient-to-r from-purple-600 to-blue-600 px-4 py-3 md:px-8 md:py-4
+        rounded-xl font-bold hover:from-purple-700 hover:to-blue-700
+        transition-all transform hover:scale-105 text-sm md:text-base 
+        whitespace-nowrap flex-shrink-0 max-w-fit"
+            >
+              Search
+            </button>
+          </form>
+        </div>
+
+        {/* Sets Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 bg-gray-900 rounded-2xl">
+          {(isUserSearching ? searchedSets : sets).map((set) => (
+            <Link
+              to={`/sets/${set.id}`}
+              key={set.id}
+              className="hover:scale-105 transition-transform"
+            >
               <SetBanner
                 setTitle={set.name}
                 cardAmount={set.cardCount.total}
@@ -83,19 +98,19 @@ export default function SetsPage() {
             </Link>
           ))}
         </div>
-      ) : (
-        <div className="flex flex-wrap m-6 justify-center items-center">
-          {searchedSets.map((set) => (
-            <Link to={`/sets/${set.id}`}>
-              <SetBanner
-                setTitle={set.name}
-                cardAmount={set.cardCount.total}
-                imageUrl={set.logo ? `${set.logo}.png` : FallbackImageErrorIcon}
-              />
-            </Link>
-          ))}
-        </div>
-      )}
+
+        {/* No Results Message */}
+        {noSetFound && (
+          <div className="mt-12 text-center p-6 bg-gray-900 rounded-xl">
+            <span className="text-xl font-bold text-red-400">
+              No sets found
+            </span>
+            <p className="mt-2 text-gray-400">
+              Try adjusting your search terms
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
