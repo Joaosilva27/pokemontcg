@@ -25,88 +25,130 @@ export default function CardDetailsPage() {
   }, [params.pokemonId]);
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <div className="flex items-center">
-        <img
-          src={`${pokemonCardData?.set?.logo}.jpg`}
-          className="w-40 h-20 object-contain mr-6"
-        />
-        <h1 className="text-xl font-bold">{pokemonCardData?.name}</h1>
-      </div>
-      <div className="flex flex-wrap items-center justify-center mb-6">
-        <img
-          src={`${pokemonCardData?.image}/high.jpg`}
-          className="w-50 h-100 object-contain"
-        />
-        <div className="flex flex-col ml-4 mt-6">
-          <div className="flex flex-col items-center justify-center mb-4 lg:w-fit">
-            <span>Check out the Price:</span>
-            <a
-              target="_blank"
-              href={`https://www.pricecharting.com/search-products?q=${pokemonCardData?.set?.name} ${pokemonCardData?.name}&type=prices`}
-            >
-              <img
-                className="object-contain w-20 h-10"
-                src={PriceChartingIcon}
-              />
-            </a>
+    <div className="min-h-screen bg-black text-white p-8">
+      <div className="max-w-6xl mx-auto">
+        {/* Header Section */}
+        <div className="flex items-center mb-12 p-6 bg-gray-900 rounded-2xl shadow-xl">
+          <img
+            src={`${pokemonCardData?.set?.logo}.jpg`}
+            className="w-32 h-16 object-contain mr-6 bg-white p-2 rounded-lg"
+          />
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+            {pokemonCardData?.name}
+          </h1>
+        </div>
+
+        {/* Main Content */}
+        <div className="flex flex-wrap lg:flex-nowrap gap-8">
+          {/* Card Image */}
+          <div className="w-full lg:w-1/2 flex justify-center">
+            <img
+              src={`${pokemonCardData?.image}/high.jpg`}
+              className="w-full max-w-md h-auto object-contain rounded-xl shadow-2xl hover:scale-105 transition-transform duration-300"
+            />
           </div>
-          <span>Rarity: {pokemonCardData?.rarity}</span>
-          <span>
-            {pokemonCardData?.types?.[0] && (
-              <span>Type: {pokemonCardData?.types?.[0]}</span>
-            )}
-          </span>
-          <span>
-            Card: {pokemonCardData?.localId} /{" "}
-            {pokemonCardData?.set?.cardCount?.total}
-          </span>
-          <span>Illustrator: {pokemonCardData?.illustrator}</span>
-          {pokemonCardData?.abilities?.map((ability) => (
-            <div className="flex flex-col max-w-96 mt-6">
-              <span>
-                {ability.name}
-                <span className="text-sm">(ability):</span>
-              </span>
-              <span className="text-sm">{ability.effect}</span>
+
+          {/* Card Details */}
+          <div className="w-full lg:w-1/2 bg-gray-900 p-8 rounded-2xl shadow-xl">
+            {/* Price Charting Section */}
+            <div className="mb-8 text-center bg-gray-800 p-4 rounded-xl">
+              <p className="text-lg mb-2 font-semibold text-blue-300">
+                Check current market price
+              </p>
+              <a
+                target="_blank"
+                href={`https://www.pricecharting.com/search-products?q=${pokemonCardData?.set?.name} ${pokemonCardData?.name}&type=prices`}
+                className="inline-block hover:scale-105 transition-transform"
+              >
+                <img
+                  className="object-contain w-32 h-12 mx-auto"
+                  src={PriceChartingIcon}
+                />
+                <span className="text-sm text-gray-400 mt-1 block">
+                  Click to view pricing
+                </span>
+              </a>
             </div>
-          ))}
-          {pokemonCardData?.attacks?.map((attack) => (
-            <div className="flex flex-col max-w-96 mt-6">
-              <span>
-                {attack?.name && attack?.effect ? (
-                  <span>
-                    {attack?.damage ? (
-                      <span>
-                        {attack?.name}: This attack deals {attack?.damage}{" "}
-                        damage.
-                      </span>
-                    ) : (
-                      <span>{attack?.name}:</span>
-                    )}
+
+            {/* Basic Info Grid */}
+            <div className="grid grid-cols-2 gap-4 mb-8">
+              <div className="bg-gray-800 p-4 rounded-lg">
+                <p className="text-sm text-gray-400">Rarity</p>
+                <p className="font-bold text-purple-400">
+                  {pokemonCardData?.rarity}
+                </p>
+              </div>
+              <div className="bg-gray-800 p-4 rounded-lg">
+                <p className="text-sm text-gray-400">Type</p>
+                <p className="font-bold text-blue-400">
+                  {pokemonCardData?.types?.[0] || "N/A"}
+                </p>
+              </div>
+              <div className="bg-gray-800 p-4 rounded-lg">
+                <p className="text-sm text-gray-400">Card Number</p>
+                <p className="font-bold">
+                  {pokemonCardData?.localId} /{" "}
+                  {pokemonCardData?.set?.cardCount?.total}
+                </p>
+              </div>
+              <div className="bg-gray-800 p-4 rounded-lg">
+                <p className="text-sm text-gray-400">Illustrator</p>
+                <p className="font-bold text-green-400">
+                  {pokemonCardData?.illustrator}
+                </p>
+              </div>
+            </div>
+
+            {/* Abilities Section */}
+            {pokemonCardData?.abilities?.map((ability, index) => (
+              <div key={index} className="mb-6 bg-gray-800 p-4 rounded-xl">
+                <div className="flex items-center mb-2">
+                  <span className="text-lg font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                    {ability.name}
                   </span>
-                ) : (
-                  <span>
-                    {attack?.damage && attack?.name && (
-                      <span>
-                        {attack?.name}: This attack deals {attack?.damage}{" "}
-                        damage.
+                  <span className="ml-2 text-sm text-gray-400">(Ability)</span>
+                </div>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  {ability.effect}
+                </p>
+              </div>
+            ))}
+
+            {/* Attacks Section */}
+            {pokemonCardData?.attacks?.map((attack, index) => (
+              <div key={index} className="mb-6 bg-gray-800 p-4 rounded-xl">
+                <div className="flex items-center justify-between mb-2">
+                  <div>
+                    <span className="text-lg font-bold text-red-400">
+                      {attack.name}
+                    </span>
+                    {attack.damage && (
+                      <span className="ml-2 text-yellow-400">
+                        ({attack.damage} Damage)
                       </span>
                     )}
-                  </span>
+                  </div>
+                </div>
+                {attack.effect && (
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    {attack.effect}
+                  </p>
                 )}
-              </span>
-              <span className="text-sm">{attack?.effect}</span>
-            </div>
-          ))}
-          <span className="max-w-96 mt-6">
+              </div>
+            ))}
+
+            {/* Card Effect */}
             {pokemonCardData?.effect && (
-              <span>
-                Effect:{" "}
-                <span className="text-sm">{pokemonCardData?.effect}</span>
-              </span>
+              <div className="mt-8 bg-gray-800 p-4 rounded-xl">
+                <p className="text-sm font-semibold text-gray-400 mb-2">
+                  Card Effect
+                </p>
+                <p className="text-gray-300 text-sm italic">
+                  "{pokemonCardData?.effect}"
+                </p>
+              </div>
             )}
-          </span>
+          </div>
         </div>
       </div>
     </div>
