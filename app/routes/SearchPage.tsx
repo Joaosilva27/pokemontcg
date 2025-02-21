@@ -30,7 +30,7 @@ export default function SearchPage() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center mt-4">
       {/* Search Form  */}
       <form className="flex items-center gap-2 md:gap-4 w-full max-w-md px-4 md:px-0">
         <input

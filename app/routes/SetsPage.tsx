@@ -52,11 +52,11 @@ export default function SetsPage() {
     <div className="min-h-screen bg-black text-white p-8">
       <div className="max-w-6xl mx-auto">
         {/* Disclaimer */}
-        <p className="text-center text-gray-400 text-sm mb-8">
+        <p className="text-center text-gray-400 text-xs mb-4">
           I will not add a 'filter by year' feature because that would require
           me to update the app constantly, and this is just a homework project.
           The sets however, will always be updated automatically as soon as a
-          new set is released (thanks to TcgDex API).
+          new set is released. (thanks to TcgDex API)
         </p>
 
         {/* Search Section */}

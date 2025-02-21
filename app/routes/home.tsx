@@ -14,23 +14,6 @@ export default function Home() {
     <div className="min-h-screen bg-black text-white p-8">
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         {/* Navigation */}
-        <nav className="flex flex-wrap justify-center gap-2 md:gap-4 mb-12 p-4 md:p-6 bg-gray-900 rounded-2xl shadow-xl w-fit">
-          <Link to="/search" className="hover:scale-105 transition-transform">
-            <span className="bg-gradient-to-r from-purple-600 to-blue-600 px-4 py-2 md:px-6 md:py-3 rounded-xl font-bold text-xs md:text-sm whitespace-nowrap">
-              Cards
-            </span>
-          </Link>
-          <Link to="/sets" className="hover:scale-105 transition-transform">
-            <span className="bg-gradient-to-r from-purple-600 to-blue-600 px-4 py-2 md:px-6 md:py-3 rounded-xl font-bold text-xs md:text-sm whitespace-nowrap">
-              Sets
-            </span>
-          </Link>
-          <Link className="hover:scale-105 transition-transform">
-            <span className="bg-gradient-to-r from-purple-600 to-blue-600 px-4 py-2 md:px-6 md:py-3 rounded-xl font-bold text-xs md:text-sm whitespace-nowrap">
-              My Collection
-            </span>
-          </Link>
-        </nav>
 
         {/* Main Content */}
         <section className="bg-gray-900 rounded-2xl shadow-xl p-8">
