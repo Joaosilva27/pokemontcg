@@ -6,6 +6,7 @@ export default function SearchPage() {
   const [inputSearch, setInputSearch] = useState<any>();
   const [cardsResult, setCardsResult] = useState<any>([]);
   const [selectedCard, setSelectedCard] = useState<any>(null);
+  const [noCardFound, setNoCardFound] = useState(false);
 
   const onPokemonSearch = (e) => {
     e.preventDefault();
@@ -17,6 +18,9 @@ export default function SearchPage() {
         );
         setCardsResult(fetchCards.data);
         console.log(fetchCards.data);
+        if (fetchCards.data.length == 0) {
+          setNoCardFound(true);
+        }
       }
     };
 
@@ -54,7 +58,14 @@ export default function SearchPage() {
             )}
           </div>
         ))}
-        {!cardsResult && <span>No results</span>}
+        {noCardFound == true && (
+          <div className="flex justify-center">
+            <span className="mt-12 text-center font-bold">
+              No results were found. Please try using fewer letters or check
+              your spelling.
+            </span>
+          </div>
+        )}
       </div>
 
       {selectedCard && (
