@@ -37,13 +37,13 @@ export default function SearchPage() {
           value={inputSearch}
           onChange={(e) => setInputSearch(e.target.value)}
           placeholder="Search for a card..."
-          className="flex-1 bg-gray-800 text-white rounded-xl px-4 py-3 md:px-6 md:py-4 
+          className="flex-1 bg-gray-800 text-white rounded-xl px-4 py-3 
                 border-2 border-gray-700 focus:border-purple-500 focus:ring-2
                 focus:ring-purple-500 outline-none transition-all text-sm md:text-base"
         />
         <button
           onClick={onPokemonSearch}
-          className="bg-gradient-to-r from-purple-600 to-blue-600 px-4 py-3 md:px-8 md:py-4
+          className="bg-gradient-to-r from-purple-600 to-blue-600 px-4 py-3
                 rounded-xl font-bold hover:from-purple-700 hover:to-blue-700
                 transition-all transform hover:scale-105 text-sm md:text-base"
         >
