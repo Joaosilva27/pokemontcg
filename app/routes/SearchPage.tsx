@@ -54,7 +54,7 @@ export default function SearchPage() {
       {/* Card List  */}
       <div className="flex justify-center items-center flex-wrap">
         {cardsResult.map((card) => (
-          <div key={card.id}>
+          <div className="ml-1.5 mt-2" key={card.id}>
             {card?.image && (
               <CardBanner
                 cardName={card.name}
