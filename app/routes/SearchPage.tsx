@@ -17,6 +17,7 @@ export default function SearchPage() {
           `https://api.tcgdex.net/v2/en/cards?name=${inputSearch}`
         );
         setCardsResult(fetchCards.data);
+        setNoCardFound(false);
         console.log(fetchCards.data);
         if (fetchCards.data.length == 0) {
           setNoCardFound(true);
