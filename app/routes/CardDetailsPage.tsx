@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import PriceChartingIcon from "../icons/priceCharting.png";
 
 export default function CardDetailsPage() {
   const params = useParams();
@@ -38,6 +39,18 @@ export default function CardDetailsPage() {
           className="w-50 h-100 object-contain"
         />
         <div className="flex flex-col ml-4 mt-6">
+          <div className="flex flex-col items-center justify-center mb-4 lg:w-fit">
+            <span>Check out the Price:</span>
+            <a
+              target="_blank"
+              href={`https://www.pricecharting.com/search-products?q=${pokemonCardData?.set?.name} ${pokemonCardData?.name}&type=prices`}
+            >
+              <img
+                className="object-contain w-20 h-10"
+                src={PriceChartingIcon}
+              />
+            </a>
+          </div>
           <span>Rarity: {pokemonCardData?.rarity}</span>
           <span>
             {pokemonCardData?.types?.[0] && (

@@ -9,10 +9,10 @@ export default function Header() {
           Built by joaosilva7875@gmail.com
         </h6>
         <a target="_blank" href="https://github.com/Joaosilva27">
-          <img src={GithubIcon} className="w-4 h-4" />
+          <img src={GithubIcon} className="w-4 h-4 animate-bounce" />
         </a>
       </div>
-      <img src={OldTcgIcon} className="w-50 h-50 object-contain" />
+      <img src={OldTcgIcon} className="w-50 h-50 object-contain " />
     </header>
   );
 }
