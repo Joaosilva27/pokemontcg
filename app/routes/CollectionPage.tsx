@@ -3,6 +3,7 @@ import CardBanner from "~/components/CardBanner";
 
 export default function CollectionPage() {
   const [collection, setCollection] = useState<any[]>([]);
+  const [selectedCard, setSelectedCard] = useState<any>(null);
 
   useEffect(() => {
     const loadDataFromLocalStorage = () => {
@@ -39,15 +40,51 @@ export default function CollectionPage() {
           Your collection is empty. Start adding cards from the search page!
         </div>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="flex flex-wrap">
           {collection.map((card) => (
-            <CardBanner
-              key={card.id}
-              cardName={card.name}
-              cardImage={`${card.image}/high.jpg`}
-              cardId={card.id}
-            />
+            <div className="m-2">
+              <CardBanner
+                key={card.id}
+                cardName={card.name}
+                cardImage={`${card.image}/high.jpg`}
+                cardId={card.id}
+                cardData={card}
+                isInCollection
+                onRemove={() => {
+                  // Update local state to trigger re-render
+                  const updated = collection.filter((c) => c.id !== card.id);
+                  setCollection(updated);
+                }}
+              />
+            </div>
           ))}
+        </div>
+      )}
+
+      {/* Card Modal */}
+      {selectedCard && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={() => setSelectedCard(null)}
+        >
+          <div
+            className="relative bg-gradient-to-r from-purple-600 to-blue-600 p-1 rounded-2xl max-w-[95vw]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="bg-gray-900 rounded-2xl p-4">
+              <img
+                src={`${selectedCard.image}/high.jpg`}
+                className="max-h-[90vh] object-contain"
+                alt={selectedCard.name}
+              />
+              <button
+                className="absolute top-2 right-2 bg-gradient-to-r from-purple-600 to-blue-600 w-8 h-8 rounded-full flex items-center justify-center text-white font-bold hover:from-purple-700 hover:to-blue-700 transition-all"
+                onClick={() => setSelectedCard(null)}
+              >
+                ×
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>

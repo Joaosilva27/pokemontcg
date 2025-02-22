@@ -4,6 +4,8 @@ interface CardBannerProps {
   cardId: string;
   onClick?: () => void;
   cardData: any;
+  isInCollection?: boolean;
+  onRemove?: () => void;
 }
 
 export default function CardBanner({
@@ -12,8 +14,9 @@ export default function CardBanner({
   onClick,
   cardId,
   cardData,
+  isInCollection = false,
+  onRemove,
 }: CardBannerProps) {
-  // In CardBanner component
   const onSaveDataToLocalStorage = () => {
     try {
       const existingCards = JSON.parse(
@@ -21,7 +24,6 @@ export default function CardBanner({
       );
 
       if (!Array.isArray(existingCards)) {
-        // Handle existing invalid format
         localStorage.setItem("pokemonCards", JSON.stringify([cardData]));
         return;
       }
@@ -30,9 +32,28 @@ export default function CardBanner({
       if (!isDuplicate) {
         const updatedCards = [...existingCards, cardData];
         localStorage.setItem("pokemonCards", JSON.stringify(updatedCards));
+        alert("Card added to collection!");
       }
     } catch (error) {
       console.error("Error saving to localStorage:", error);
+    }
+  };
+
+  const onRemoveDataFromLocalStorage = () => {
+    try {
+      const existingCards = JSON.parse(
+        localStorage.getItem("pokemonCards") || "[]"
+      );
+
+      if (Array.isArray(existingCards)) {
+        const updatedCards = existingCards.filter(
+          (c: any) => c.id !== cardData.id
+        );
+        localStorage.setItem("pokemonCards", JSON.stringify(updatedCards));
+        onRemove?.(); // Trigger parent component update
+      }
+    } catch (error) {
+      console.error("Error removing from localStorage:", error);
     }
   };
 
@@ -53,14 +74,28 @@ export default function CardBanner({
           {cardName}
         </span>
       </div>
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center gap-2">
         <a
           href={`/cards/${cardId}`}
           className="mt-2 bg-gradient-to-r from-purple-600 to-blue-600 text-xs px-3 py-1 rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all"
         >
           See details
         </a>
-        <span onClick={() => onSaveDataToLocalStorage(cardData)}>Add</span>
+        {isInCollection ? (
+          <button
+            onClick={onRemoveDataFromLocalStorage}
+            className="mt-2 bg-gradient-to-r from-red-600 to-orange-600 text-xs px-3 py-1 rounded-lg hover:from-red-700 hover:to-orange-700 transition-all"
+          >
+            Remove
+          </button>
+        ) : (
+          <button
+            onClick={onSaveDataToLocalStorage}
+            className="mt-2 bg-gradient-to-r from-green-600 to-emerald-600 text-xs px-3 py-1 rounded-lg hover:from-green-700 hover:to-emerald-700 transition-all"
+          >
+            ⭐
+          </button>
+        )}
       </div>
     </div>
   );
