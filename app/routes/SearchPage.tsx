@@ -61,6 +61,7 @@ export default function SearchPage() {
                 cardImage={`${card.image}/high.jpg`}
                 cardId={card.id}
                 onClick={() => setSelectedCard(card)}
+                cardData={card}
               />
             )}
           </div>
