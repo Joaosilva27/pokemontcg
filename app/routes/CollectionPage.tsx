@@ -49,6 +49,7 @@ export default function CollectionPage() {
                 cardImage={`${card.image}/high.jpg`}
                 cardId={card.id}
                 cardData={card}
+                onClick={() => setSelectedCard(card)}
                 isInCollection
                 onRemove={() => {
                   // Update local state to trigger re-render
