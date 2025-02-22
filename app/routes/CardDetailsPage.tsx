@@ -31,7 +31,7 @@ export default function CardDetailsPage() {
         <div className="flex items-center mb-12 p-6 bg-gray-900 rounded-2xl shadow-xl">
           <img
             src={`${pokemonCardData?.set?.logo}.jpg`}
-            className="w-32 h-16 object-contain mr-6 bg-white p-2 rounded-lg"
+            className="w-32 h-16 object-contain mr-6 p-2 rounded-lg"
           />
           <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
             {pokemonCardData?.name}
