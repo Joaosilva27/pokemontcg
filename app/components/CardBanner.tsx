@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 interface CardBannerProps {
   cardImage: string;
   cardName: string;
@@ -17,6 +19,13 @@ export default function CardBanner({
   isInCollection = false,
   onRemove,
 }: CardBannerProps) {
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const triggerAnimation = () => {
+    setIsAnimating(true);
+    setTimeout(() => setIsAnimating(false), 1000);
+  };
+
   const onSaveDataToLocalStorage = () => {
     try {
       const existingCards = JSON.parse(
@@ -32,7 +41,7 @@ export default function CardBanner({
       if (!isDuplicate) {
         const updatedCards = [...existingCards, cardData];
         localStorage.setItem("pokemonCards", JSON.stringify(updatedCards));
-        alert("Card added to collection!");
+        triggerAnimation();
       }
     } catch (error) {
       console.error("Error saving to localStorage:", error);
@@ -50,7 +59,7 @@ export default function CardBanner({
           (c: any) => c.id !== cardData.id
         );
         localStorage.setItem("pokemonCards", JSON.stringify(updatedCards));
-        onRemove?.(); // Trigger parent component update
+        onRemove?.();
       }
     } catch (error) {
       console.error("Error removing from localStorage:", error);
@@ -91,7 +100,9 @@ export default function CardBanner({
         ) : (
           <button
             onClick={onSaveDataToLocalStorage}
-            className="mt-2 bg-gradient-to-r from-green-600 to-emerald-600 text-xs px-3 py-1 rounded-lg hover:from-green-700 hover:to-emerald-700 transition-all"
+            className={`mt-2 text-xs px-3 py-1 rounded-lg transition-all ${
+              isAnimating ? "animate-[star-pop_0.5s_ease-out]" : ""
+            } bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600`}
           >
             ⭐
           </button>
