@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import PriceChartingIcon from "../icons/priceCharting.png";
+import { Link } from "react-router";
 
 export default function CardDetailsPage() {
   const params = useParams();
@@ -29,10 +30,18 @@ export default function CardDetailsPage() {
       <div className="max-w-6xl mx-auto">
         {/* Header Section */}
         <div className="flex items-center mb-12 p-6 bg-gray-900 rounded-2xl shadow-xl">
-          <img
-            src={`${pokemonCardData?.set?.logo}.jpg`}
-            className="w-32 h-16 object-contain mr-6 p-2 rounded-lg"
-          />
+          <Link to={`/sets/${pokemonCardData?.set?.name}`}>
+            <div className="flex flex-col items-center hover:scale-105 transition-transform">
+              <img
+                src={`${pokemonCardData?.set?.logo}.png`}
+                className="w-32 h-16 object-contain mr-6 p-2 rounded-lg"
+              />
+              <span className="text-sm text-gray-400 mt-1 block">
+                Click to view set
+              </span>
+            </div>
+          </Link>
+
           <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
             {pokemonCardData?.name}
           </h1>
