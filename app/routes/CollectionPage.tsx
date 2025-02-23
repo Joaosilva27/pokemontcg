@@ -31,6 +31,11 @@ export default function CollectionPage() {
 
   return (
     <div className="min-h-screen bg-black text-white pl-1 mt-6">
+      {/* Disclaimer */}
+      <p className="text-center text-gray-400 text-xs mb-4">
+        Your favorite cards are saved to your device's local storage. Please do
+        not use incognito mode.
+      </p>
       <h1 className="text-3xl font-bold mb-8 text-center">
         Your Card Collection
       </h1>
