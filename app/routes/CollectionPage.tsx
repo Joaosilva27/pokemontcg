@@ -40,25 +40,25 @@ export default function CollectionPage() {
         Your Card Collection
       </h1>
 
-      {collection.length === 0 ? (
+      {collection?.length === 0 ? (
         <div className="text-center text-gray-400">
           Your collection is empty. Start adding cards from the search page!
         </div>
       ) : (
         <div className="flex flex-wrap justify-center">
-          {collection.map((card) => (
+          {collection?.map((card) => (
             <div className="m-2">
               <CardBanner
-                key={card.id}
-                cardName={card.name}
-                cardImage={`${card.image}/high.jpg`}
-                cardId={card.id}
+                key={card?.id}
+                cardName={card?.name}
+                cardImage={`${card?.image}/high.jpg`}
+                cardId={card?.id}
                 cardData={card}
                 onClick={() => setSelectedCard(card)}
                 isInCollection
                 onRemove={() => {
                   // Update local state to trigger re-render
-                  const updated = collection.filter((c) => c.id !== card.id);
+                  const updated = collection.filter((c) => c.id !== card?.id);
                   setCollection(updated);
                 }}
               />
@@ -79,9 +79,9 @@ export default function CollectionPage() {
           >
             <div className="bg-gray-900 rounded-2xl p-4">
               <img
-                src={`${selectedCard.image}/high.jpg`}
+                src={`${selectedCard?.image}/high.jpg`}
                 className="max-h-[90vh] object-contain"
-                alt={selectedCard.name}
+                alt={selectedCard?.name}
               />
               <button
                 className="absolute top-2 right-2 bg-gradient-to-r from-purple-600 to-blue-600 w-8 h-8 rounded-full flex items-center justify-center text-white font-bold hover:from-purple-700 hover:to-blue-700 transition-all"

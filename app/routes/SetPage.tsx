@@ -150,6 +150,7 @@ export default function SetPage() {
               cardImage={`${card.image}/high.jpg`}
               onClick={() => setSelectedCard(card)}
               cardId={card.id}
+              cardData={card}
             />
           ))}
         </div>
