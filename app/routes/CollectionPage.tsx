@@ -30,7 +30,7 @@ export default function CollectionPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-white p-8">
+    <div className="min-h-screen bg-black text-white pl-1 mt-6">
       <h1 className="text-3xl font-bold mb-8 text-center">
         Your Card Collection
       </h1>
@@ -40,7 +40,7 @@ export default function CollectionPage() {
           Your collection is empty. Start adding cards from the search page!
         </div>
       ) : (
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap justify-center">
           {collection.map((card) => (
             <div className="m-2">
               <CardBanner
